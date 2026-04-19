@@ -4,7 +4,7 @@ A full-stack volunteer management platform connecting vulnerable beneficiaries w
 
 > This repository is public for presentation purposes only. The source code is hosted in a private repository.
 
----
+
 
 ## 📖 About the Project
 
@@ -26,7 +26,6 @@ The platform covers the full lifecycle of a volunteer engagement:
 
 Supabase is called **directly** from web and mobile (RLS + Auth native). The Express backend is reserved solely for operations requiring `service_role`: PDF/CSV exports, fraud analysis, and GDPR anonymisation. This keeps Row Level Security as the single source of truth across all 18 tables and avoids duplicating access-control logic in a middleware layer.
 
----
 
 ## 🧰 Tech Stack
 
@@ -39,7 +38,7 @@ Supabase is called **directly** from web and mobile (RLS + Auth native). The Exp
 | **TypeScript 5.x** | Strict mode across all packages |
 | **GitHub Actions** | CI: install, prisma generate, typecheck, lint, security audit |
 
-### Web — Next.js
+### Web - Next.js
 
 | Technology | Version | Usage |
 |---|---|---|
@@ -51,7 +50,7 @@ Supabase is called **directly** from web and mobile (RLS + Auth native). The Exp
 | **Supabase JS** | — | Auth + database client (RLS) |
 | **Sentry** | — | Error monitoring |
 
-### Mobile — Expo / React Native
+### Mobile - Expo / React Native
 
 | Technology | Version | Usage |
 |---|---|---|
@@ -68,7 +67,7 @@ Supabase is called **directly** from web and mobile (RLS + Auth native). The Exp
 | **expo-file-system + expo-sharing** | — | CSV/PDF export and native share sheet |
 | **Sentry** | — | Error monitoring |
 
-### Backend — Express
+### Backend - Express
 
 | Technology | Version | Usage |
 |---|---|---|
@@ -90,9 +89,7 @@ Supabase is called **directly** from web and mobile (RLS + Auth native). The Exp
 | **Railway** | Backend deployment (Dockerfile + tsx) |
 | **Expo EAS Build** | Mobile APK/IPA builds |
 
----
-
-## 🗂️ Database — 18 Tables
+## 🗂️ Database - 18 Tables
 
 | Table | Role |
 |---|---|
@@ -117,8 +114,6 @@ Supabase is called **directly** from web and mobile (RLS + Auth native). The Exp
 
 Row Level Security is enforced on every table using `SECURITY DEFINER` helper functions (`get_my_role()`, `get_my_org_id()`), keeping policy logic out of application code and preventing RLS recursion on the `profiles` table.
 
----
-
 ## 🔐 Backend API Endpoints
 
 The Express backend exposes a small set of routes that require `service_role` access — operations that cannot be safely performed client-side.
@@ -142,8 +137,6 @@ The Express backend exposes a small set of routes that require `service_role` ac
 |---|---|---|---|
 | `POST` | `/api/rgpd/anonymize` | Anonymise profile + delete auth account | 5 req / hour |
 
----
-
 ## 🚢 Deployment
 
 | Component | Platform | Status |
@@ -152,8 +145,6 @@ The Express backend exposes a small set of routes that require `service_role` ac
 | Backend (Express) | **Railway** | ✅ Live |
 | Database / Auth | **Supabase** — EU West (Ireland) | ✅ Live |
 | Mobile APK | **Expo EAS Build** | ⏳ Build not launched |
-
----
 
 ## 🎯 MVP Success Criteria
 
@@ -164,8 +155,6 @@ The Express backend exposes a small set of routes that require `service_role` ac
 | Admin | < 15 min/day, zero unhandled cancellations |
 | Project | 50-person pilot, ≥ 90% missions filled |
 | Technical | < 2–3s response time, offline-first mobile, GDPR compliant |
-
----
 
 ## 📄 Licence
 
