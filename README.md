@@ -1,6 +1,6 @@
 # 🤝 BénévolApp
 
-A full-stack volunteer management platform connecting vulnerable beneficiaries with RSA-recipient volunteers under admin supervision. Built as a monorepo with a Next.js web app, an Expo mobile app, and an Express backend — all sharing a single PostgreSQL database through Supabase.
+A full-stack volunteer management platform connecting vulnerable beneficiaries with RSA-recipient volunteers under admin supervision. Built as a monorepo with a Next.js web app, an Expo mobile app, and an Express backend all sharing a single PostgreSQL database through Supabase.
 
 > This repository is public for presentation purposes only. The source code is hosted in a private repository.
 
@@ -25,7 +25,6 @@ The platform covers the full lifecycle of a volunteer engagement:
 ### Key Architectural Decision
 
 Supabase is called **directly** from web and mobile (RLS + Auth native). The Express backend is reserved solely for operations requiring `service_role`: PDF/CSV exports, fraud analysis, and GDPR anonymisation. This keeps Row Level Security as the single source of truth across all 18 tables and avoids duplicating access-control logic in a middleware layer.
-
 
 ## 🧰 Tech Stack
 
